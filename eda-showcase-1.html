@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="pandoc" />
+
+        <meta name="author" content="Tran Quynh Trang" />
+    
+    
+    <title>Exploratory data analysis showcase</title>
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+        <script src="eda-showcase-1_files/jquery-1.11.3/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="eda-showcase-1_files/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="eda-showcase-1_files/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="eda-showcase-1_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
+    <script src="eda-showcase-1_files/navigation-1.1/tabsets.js"></script>
+    <link href="eda-showcase-1_files/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+    <script src="eda-showcase-1_files/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+    <link href="eda-showcase-1_files/bootstrap_material-0.1/bootstrap-material-design.min.css" rel="stylesheet" />
+    <link href="eda-showcase-1_files/bootstrap_material-0.1/ripples.min.css" rel="stylesheet" />
+    <script src="eda-showcase-1_files/bootstrap_material-0.1/material.min.js"></script>
+    <script src="eda-showcase-1_files/bootstrap_material-0.1/ripples.min.js"></script>
+    <link href="eda-showcase-1_files/material-0.1/material.css" rel="stylesheet" />
+    <script src="eda-showcase-1_files/material-0.1/material.js"></script>
+    
+    
+    
+    
+    <!-- tabsets -->
+    <script>
+      $(document).ready(function () {
+	  window.buildTabsets("toc");
+      });
+      $(document).ready(function () {
+	  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+	      $(this).parent().toggleClass('nav-tabs-open')
+	  });
+      });
+    </script>
+
+    <!-- code folding -->
+    
+    <!-- code download -->
+    
+
+    <!-- tabsets dropdown -->
+
+    <style type="text/css">
+      .tabset-dropdown > .nav-tabs {
+	  display: inline-table;
+	  max-height: 500px;
+	  min-height: 44px;
+	  overflow-y: auto;
+	  background: white;
+	  border: 1px solid #ddd;
+	  border-radius: 4px;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+	  content: "&#xe258;";
+	  border: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .pages .tabset-dropdown > .nav-tabs > li.active {
+	  display: block;
+      }
+
+      .pages .tabset-dropdown > .nav-tabs > li.active > a {
+	  background-color: transparent !important;
+	  color: #000000 !important;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li > a,
+      .tabset-dropdown > .nav-tabs > li > a:focus,
+      .tabset-dropdown > .nav-tabs > li > a:hover {
+	  border: none;
+	  display: inline-block;
+	  border-radius: 4px;
+	  background-color: transparent;
+	  color: #00A698 !important;
+	  font-weight: 300 !important;
+	  font-size: 14px;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+	  display: block;
+	  float: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li {
+	  display: none;
+      }
+    </style>
+    
+</head>
+
+<body>
+
+  <div class="header-panel shadow z-2">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-3">
+	  	  <div id="header">
+	    <h1 class="title">Exploratory data analysis showcase</h1>
+	    	    	    	    <h4 class="author">Tran Quynh Trang</h4>
+	    	    	    	  </div>
+	  	</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container-fluid main-container">
+    <div class="row">
+
+<nav class="col-xs-3 menu">
+<div id="toc">
+<ul>
+<li><a href="#business-requirement">Business requirement</a></li>
+<li><a href="#data-preview">Data preview</a></li>
+<li><a href="#data-analysis">Data analysis</a></li>
+<li><a href="#insights-summary">Insights summary</a></li>
+<li><a href="#recommendations">Recommendations</a></li>
+</ul>
+</div>
+</nav>
+      
+<div class="pages col-xs-9">
+
+    
+<div class="row">
+
+<div class="col-xs-10">
+<div id="business-requirement" class="section level1">
+<h1>Business requirement</h1>
+<p><strong>Dataset</strong>: Brazilian E-Commerce Public Dataset by Olist</p>
+<ul>
+<li>Explore, clean (if necessary) and describe the dataset</li>
+<li>Identify and measure suitable metrics to analyse the ecommerce company performance</li>
+<li>Provide supporting analysis, visualization and insights from the data</li>
+<li>Provide recommendations to improve the business</li>
+</ul>
+</div>
+<div id="data-preview" class="section level1">
+<h1>Data preview</h1>
+<hr />
+<ul>
+<li>There are 9 datasets to import into R</li>
+</ul>
+<pre><code>## [1] &quot;brazilian-ecommerce/olist_customers_dataset.csv&quot;          
+## [2] &quot;brazilian-ecommerce/olist_geolocation_dataset.csv&quot;        
+## [3] &quot;brazilian-ecommerce/olist_order_items_dataset.csv&quot;        
+## [4] &quot;brazilian-ecommerce/olist_order_payments_dataset.csv&quot;     
+## [5] &quot;brazilian-ecommerce/olist_order_reviews_dataset.csv&quot;      
+## [6] &quot;brazilian-ecommerce/olist_orders_dataset.csv&quot;             
+## [7] &quot;brazilian-ecommerce/olist_products_dataset.csv&quot;           
+## [8] &quot;brazilian-ecommerce/olist_sellers_dataset.csv&quot;            
+## [9] &quot;brazilian-ecommerce/product_category_name_translation.csv&quot;</code></pre>
+<ul>
+<li>Explore each dataset</li>
+</ul>
+<div id="olist_customers_dataset" class="section level2">
+<h2>olist_customers_dataset</h2>
+<p><br></p>
+<table>
+<caption>Dataframe structure</caption>
+<thead>
+<tr class="header">
+<th align="left">Column name</th>
+<th align="left">Length</th>
+<th align="left">Class</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">customer_id</td>
+<td align="left">99441</td>
+<td align="left">character</td>
+<td align="left">06b8999e2fba1a1fbc88172c00ba8bc7</td>
+</tr>
+<tr class="even">
+<td align="left">customer_unique_id</td>
+<td align="left">99441</td>
+<td align="left">character</td>
+<td align="left">861eff4711a542e4b93843c6dd7febb0</td>
+</tr>
+<tr class="odd">
+<td align="left">customer_zip_code_prefix</td>
+<td align="left">99441</td>
+<td align="left">numeric</td>
+<td align="left">14409</td>
+</tr>
+<tr class="even">
+<td align="left">customer_city</td>
+<td align="left">99441</td>
+<td align="left">factor</td>
+<td align="left">franca</td>
+</tr>
+<tr class="odd">
+<td align="left">customer_state</td>
+<td align="left">99441</td>
+<td align="left">factor</td>
+<td align="left">SP</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="olist_geolocation_dataset" class="section level2">
+<h2>olist_geolocation_dataset</h2>
+<p><br></p>
+<table>
+<caption>Dataframe structure</caption>
+<thead>
+<tr class="header">
+<th align="left">Column name</th>
+<th align="left">Length</th>
+<th align="left">Class</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">geolocation_zip_code_prefix</td>
+<td align="left">1000163</td>
+<td align="left">numeric</td>
+<td align="left">1037</td>
+</tr>
+<tr class="even">
+<td align="left">geolocation_lat</td>
+<td align="left">1000163</td>
+<td align="left">numeric</td>
+<td align="left">-23.5456212811527</td>
+</tr>
+<tr class="odd">
+<td align="left">geolocation_lng</td>
+<td align="left">1000163</td>
+<td align="left">numeric</td>
+<td align="left">-46.6392920480017</td>
+</tr>
+<tr class="even">
+<td align="left">geolocation_city</td>
+<td align="left">1000163</td>
+<td align="left">factor</td>
+<td align="left">sao paulo</td>
+</tr>
+<tr class="odd">
+<td align="left">geolocation_state</td>
+<td align="left">1000163</td>
+<td align="left">factor</td>
+<td align="left">SP</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="olist_order_items_dataset" class="section level2">
+<h2>olist_order_items_dataset</h2>
+<p><br></p>
+<table>
+<caption>Dataframe structure</caption>
+<thead>
+<tr class="header">
+<th align="left">Column name</th>
+<th align="left">Length</th>
+<th align="left">Class</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">order_id</td>
+<td align="left">112650</td>
+<td align="left">character</td>
+<td align="left">00010242fe8c5a6d1ba2dd792cb16214</td>
+</tr>
+<tr class="even">
+<td align="left">order_item_id</td>
+<td align="left">112650</td>
+<td align="left">numeric</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">product_id</td>
+<td align="left">112650</td>
+<td align="left">character</td>
+<td align="left">4244733e06e7ecb4970a6e2683c13e61</td>
+</tr>
+<tr class="even">
+<td align="left">seller_id</td>
+<td align="left">112650</td>
+<td align="left">character</td>
+<td align="left">48436dade18ac8b2bce089ec2a041202</td>
+</tr>
+<tr class="odd">
+<td align="left">shipping_limit_date</td>
+<td align="left">112650</td>
+<td align="left">POSIXct</td>
+<td align="left">1505814335</td>
+</tr>
+<tr class="even">
+<td align="left">price</td>
+<td align="left">112650</td>
+<td align="left">numeric</td>
+<td align="left">58.9</td>
+</tr>
+<tr class="odd">
+<td align="left">freight_value</td>
+<td align="left">112650</td>
+<td align="left">numeric</td>
+<td align="left">13.29</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="olist_order_payments_dataset" class="section level2">
+<h2>olist_order_payments_dataset</h2>
+<p><br></p>
+<table>
+<caption>Dataframe structure</caption>
+<thead>
+<tr class="header">
+<th align="left">Column name</th>
+<th align="left">Length</th>
+<th align="left">Class</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">order_id</td>
+<td align="left">103886</td>
+<td align="left">character</td>
+<td align="left">b81ef226f3fe1789b1e8b2acac839d17</td>
+</tr>
+<tr class="even">
+<td align="left">payment_sequential</td>
+<td align="left">103886</td>
+<td align="left">numeric</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">payment_type</td>
+<td align="left">103886</td>
+<td align="left">factor</td>
+<td align="left">credit_card</td>
+</tr>
+<tr class="even">
+<td align="left">payment_installments</td>
+<td align="left">103886</td>
+<td align="left">numeric</td>
+<td align="left">8</td>
+</tr>
+<tr class="odd">
+<td align="left">payment_value</td>
+<td align="left">103886</td>
+<td align="left">numeric</td>
+<td align="left">99.33</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="olist_order_reviews_dataset" class="section level2">
+<h2>olist_order_reviews_dataset</h2>
+<p><br></p>
+<table>
+<caption>Dataframe structure</caption>
+<thead>
+<tr class="header">
+<th align="left">Column name</th>
+<th align="left">Length</th>
+<th align="left">Class</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">review_id</td>
+<td align="left">100000</td>
+<td align="left">character</td>
+<td align="left">7bc2406110b926393aa56f80a40eba40</td>
+</tr>
+<tr class="even">
+<td align="left">order_id</td>
+<td align="left">100000</td>
+<td align="left">character</td>
+<td align="left">73fc7af87114b39712e6da79b0a377eb</td>
+</tr>
+<tr class="odd">
+<td align="left">review_score</td>
+<td align="left">100000</td>
+<td align="left">numeric</td>
+<td align="left">4</td>
+</tr>
+<tr class="even">
+<td align="left">review_comment_title</td>
+<td align="left">100000</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">review_comment_message</td>
+<td align="left">100000</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">review_creation_date</td>
+<td align="left">100000</td>
+<td align="left">POSIXct</td>
+<td align="left">1516233600</td>
+</tr>
+<tr class="odd">
+<td align="left">review_answer_timestamp</td>
+<td align="left">100000</td>
+<td align="left">POSIXct</td>
+<td align="left">1516312019</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="olist_orders_dataset" class="section level2">
+<h2>olist_orders_dataset</h2>
+<p><br></p>
+<table>
+<caption>Dataframe structure</caption>
+<thead>
+<tr class="header">
+<th align="left">Column name</th>
+<th align="left">Length</th>
+<th align="left">Class</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">order_id</td>
+<td align="left">99441</td>
+<td align="left">character</td>
+<td align="left">e481f51cbdc54678b7cc49136f2d6af7</td>
+</tr>
+<tr class="even">
+<td align="left">customer_id</td>
+<td align="left">99441</td>
+<td align="left">character</td>
+<td align="left">9ef432eb6251297304e76186b10a928d</td>
+</tr>
+<tr class="odd">
+<td align="left">order_status</td>
+<td align="left">99441</td>
+<td align="left">factor</td>
+<td align="left">delivered</td>
+</tr>
+<tr class="even">
+<td align="left">order_purchase_timestamp</td>
+<td align="left">99441</td>
+<td align="left">POSIXct</td>
+<td align="left">1506941793</td>
+</tr>
+<tr class="odd">
+<td align="left">order_approved_at</td>
+<td align="left">99441</td>
+<td align="left">POSIXct</td>
+<td align="left">1506942435</td>
+</tr>
+<tr class="even">
+<td align="left">order_delivered_carrier_date</td>
+<td align="left">99441</td>
+<td align="left">POSIXct</td>
+<td align="left">1507146900</td>
+</tr>
+<tr class="odd">
+<td align="left">order_delivered_customer_date</td>
+<td align="left">99441</td>
+<td align="left">POSIXct</td>
+<td align="left">1507670713</td>
+</tr>
+<tr class="even">
+<td align="left">order_estimated_delivery_date</td>
+<td align="left">99441</td>
+<td align="left">POSIXct</td>
+<td align="left">1508284800</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="olist_products_dataset" class="section level2">
+<h2>olist_products_dataset</h2>
+<p><br></p>
+<table>
+<caption>Dataframe structure</caption>
+<thead>
+<tr class="header">
+<th align="left">Column name</th>
+<th align="left">Length</th>
+<th align="left">Class</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">product_id</td>
+<td align="left">32951</td>
+<td align="left">character</td>
+<td align="left">1e9e8ef04dbcff4541ed26657ea517e5</td>
+</tr>
+<tr class="even">
+<td align="left">product_category_name</td>
+<td align="left">32951</td>
+<td align="left">factor</td>
+<td align="left">perfumaria</td>
+</tr>
+<tr class="odd">
+<td align="left">product_name_lenght</td>
+<td align="left">32951</td>
+<td align="left">numeric</td>
+<td align="left">40</td>
+</tr>
+<tr class="even">
+<td align="left">product_description_lenght</td>
+<td align="left">32951</td>
+<td align="left">numeric</td>
+<td align="left">287</td>
+</tr>
+<tr class="odd">
+<td align="left">product_photos_qty</td>
+<td align="left">32951</td>
+<td align="left">numeric</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">product_weight_g</td>
+<td align="left">32951</td>
+<td align="left">numeric</td>
+<td align="left">225</td>
+</tr>
+<tr class="odd">
+<td align="left">product_length_cm</td>
+<td align="left">32951</td>
+<td align="left">numeric</td>
+<td align="left">16</td>
+</tr>
+<tr class="even">
+<td align="left">product_height_cm</td>
+<td align="left">32951</td>
+<td align="left">numeric</td>
+<td align="left">10</td>
+</tr>
+<tr class="odd">
+<td align="left">product_width_cm</td>
+<td align="left">32951</td>
+<td align="left">numeric</td>
+<td align="left">14</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="olist_sellers_dataset" class="section level2">
+<h2>olist_sellers_dataset</h2>
+<p><br></p>
+<table>
+<caption>Dataframe structure</caption>
+<thead>
+<tr class="header">
+<th align="left">Column name</th>
+<th align="left">Length</th>
+<th align="left">Class</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">seller_id</td>
+<td align="left">3095</td>
+<td align="left">character</td>
+<td align="left">3442f8959a84dea7ee197c632cb2df15</td>
+</tr>
+<tr class="even">
+<td align="left">seller_zip_code_prefix</td>
+<td align="left">3095</td>
+<td align="left">numeric</td>
+<td align="left">13023</td>
+</tr>
+<tr class="odd">
+<td align="left">seller_city</td>
+<td align="left">3095</td>
+<td align="left">factor</td>
+<td align="left">campinas</td>
+</tr>
+<tr class="even">
+<td align="left">seller_state</td>
+<td align="left">3095</td>
+<td align="left">factor</td>
+<td align="left">SP</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="product_category_name_translation" class="section level2">
+<h2>product_category_name_translation</h2>
+<p><br></p>
+<table>
+<caption>Dataframe structure</caption>
+<thead>
+<tr class="header">
+<th align="left">Column name</th>
+<th align="left">Length</th>
+<th align="left">Class</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">product_category_name</td>
+<td align="left">71</td>
+<td align="left">factor</td>
+<td align="left">beleza_saude</td>
+</tr>
+<tr class="even">
+<td align="left">product_category_name_english</td>
+<td align="left">71</td>
+<td align="left">factor</td>
+<td align="left">health_beauty</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+</div>
+<div id="data-analysis" class="section level1">
+<h1>Data analysis</h1>
+<div id="business-performance-metrics" class="section level2">
+<h2>Business performance metrics</h2>
+<div id="gross-merchandise-value-gmv" class="section level3">
+<h3>Gross merchandise value (GMV)</h3>
+<hr />
+<ul>
+<li>Total GMV increased sharply, almost <strong>x10</strong> from ~$100k to ~$1000k/ month, <strong>in 2017</strong> and <strong>stables at ~$900k/ month</strong> in the first 8 months of 2018</li>
+</ul>
+<p><img src="eda-showcase-1_files/figure-html/unnamed-chunk-5-1.png" width="576" /></p>
+<hr />
+</div>
+<div id="average-order-value-aov" class="section level3">
+<h3>Average order value (AOV)</h3>
+<hr />
+<ul>
+<li><p>Similar to GMV, the number of <strong>monthly delivered orders</strong> also rose by <strong>10 times in 2017</strong>, then <strong>stablized at ~7000 levels in 2018</strong>. The <strong>delivery rate</strong> was improved considerably <strong>from 93% to 98%</strong> over 1.5 years</p></li>
+<li><p>The <strong>canceled order rates</strong> were kept <strong>below 1.3%</strong>, while the <strong>percentage of unavailable orders decreased</strong> significantly <strong>from 2.5% to around 0.2%</strong> recently which means the product availability on the e-commerce platform has met consumers’ demands</p></li>
+</ul>
+<p><img src="eda-showcase-1_files/figure-html/unnamed-chunk-6-1.png" width="960" /></p>
+<hr />
+<ul>
+<li><strong>50%</strong> of orders has their <strong>values above $80-$90</strong> and this median AOV <strong>stables</strong> over 18 months</li>
+</ul>
+<p>=&gt; There is a <strong>room for AOV improvement</strong> by better cross-sell &amp; up-sell</p>
+<p><img src="eda-showcase-1_files/figure-html/unnamed-chunk-7-1.png" width="576" /></p>
+<hr />
+</div>
+<div id="customer-retention-rate" class="section level3">
+<h3>Customer retention rate</h3>
+<hr />
+<ul>
+<li>There are only <strong>1788 returned customer</strong> over the last 18 months, making up <strong>1.87%</strong></li>
+</ul>
+<p>=&gt; The <strong>retention rate</strong> is surprisingly <strong>low</strong> for an e-commerce platform</p>
+<table class="table table-condensed">
+<caption>
+Customer retention rate
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+Customer group
+</th>
+<th style="text-align:right;">
+Number
+</th>
+<th style="text-align:right;">
+Percentage
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+No return
+</td>
+<td style="text-align:right;">
+93992
+</td>
+<td style="text-align:right;">
+98.13
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+Return
+</td>
+<td style="text-align:right;">
+1788
+</td>
+<td style="text-align:right;">
+1.87
+</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+</div>
+<div id="operation-performance-metrics" class="section level2">
+<h2>Operation performance metrics</h2>
+<div id="order-processing-time" class="section level3">
+<h3>Order processing time</h3>
+<hr />
+<ul>
+<li>There is a <strong>remarkable improvement in order processing time</strong> in recent 5 months with the median <strong>dropping from ~13 days to ~7 days per order</strong></li>
+</ul>
+<p><img src="eda-showcase-1_files/figure-html/unnamed-chunk-11-1.png" width="576" /></p>
+<hr />
+<ul>
+<li><p><strong>Nov 2017, Feb &amp; Mar 2018</strong> witnessed <strong>10-20% of orders being lately-delivered</strong>. However, the situation was <strong>quickly rectified</strong>.</p></li>
+<li><p>In general, around <strong>95%</strong> of orders are <strong>delivered on time or early</strong> compared to estimation for most of the observed months</p></li>
+</ul>
+<p><img src="eda-showcase-1_files/figure-html/unnamed-chunk-13-1.png" width="576" /></p>
+<hr />
+</div>
+</div>
+<div id="customer-behaviours" class="section level2">
+<h2>Customer behaviours</h2>
+<div id="customer-rating-scores" class="section level3">
+<h3>Customer rating scores</h3>
+<hr />
+<ul>
+<li>The average <strong>review scores</strong> have been kept <strong>above 4</strong>, <strong>except for months when some late-delivered orders were recorded</strong></li>
+</ul>
+<p><img src="eda-showcase-1_files/figure-html/unnamed-chunk-15-1.png" width="576" /></p>
+<hr />
+</div>
+<div id="popular-product-categories" class="section level3">
+<h3>Popular product categories</h3>
+<hr />
+<ul>
+<li><p>The marketplace is <strong>most popular for Bed-Bath-Table, Heath-Beauty and Sport-Leisure</strong> product categories with <strong>highest number of orders</strong> in 18 months</p></li>
+<li><p><strong>Watches-Gifts</strong> is also a noticeable category for <strong>second highest total GMV</strong> following Heath-Beauty</p></li>
+</ul>
+<p><img src="eda-showcase-1_files/figure-html/unnamed-chunk-17-1.png" width="576" /></p>
+<hr />
+<ul>
+<li><p>As for the taste transition trend, there is a <strong>surge in popularity of Health-Beauty and Computers-Accessories</strong> as a replacement of Sport-Leisure and Furniture Decor <strong>in the Top 3</strong></p></li>
+<li><p><strong>Watches-Gifts and Auto</strong> categories also occupy the places of Toys and Cool Stuff <strong>in the Top 10</strong></p></li>
+</ul>
+<p><img src="eda-showcase-1_files/figure-html/unnamed-chunk-18-1.png" width="576" /></p>
+<hr />
+</div>
+<div id="popular-order-hours" class="section level3">
+<h3>Popular order hours</h3>
+<hr />
+<ul>
+<li><p>The <strong>peak daytime</strong> for orders are between <strong>10am and 17pm</strong> in weekdays.</p></li>
+<li><p><strong>Evenings from Monday to Thursday &amp; Sunday</strong> are second popular for online purchase</p></li>
+</ul>
+<p>=&gt; It’s the time when system stability is crucial and campaigns should be run</p>
+<p><img src="eda-showcase-1_files/figure-html/unnamed-chunk-20-1.png" width="576" /></p>
+<hr />
+</div>
+<div id="popular-payment-methods" class="section level3">
+<h3>Popular payment methods</h3>
+<hr />
+<ul>
+<li><p><strong>Credit card</strong> is the <strong>most used</strong> payment method, especially for high valued orders (around $106)</p></li>
+<li><p><strong>Vouchers</strong> are usually paid for <strong>low valued orders</strong> (around $40)</p></li>
+</ul>
+<p><img src="eda-showcase-1_files/figure-html/unnamed-chunk-22-1.png" width="576" /></p>
+<hr />
+<table class="table table-condensed">
+<thead>
+<tr>
+<th style="text-align:right;">
+payment_type
+</th>
+<th style="text-align:right;">
+no
+</th>
+<th style="text-align:right;">
+min
+</th>
+<th style="text-align:right;">
+q25
+</th>
+<th style="text-align:right;">
+q50
+</th>
+<th style="text-align:right;">
+q75
+</th>
+<th style="text-align:right;">
+q90
+</th>
+<th style="text-align:right;">
+max
+</th>
+<th style="text-align:right;">
+mean
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+boleto
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #dceae4">19784</span>
+</td>
+<td style="text-align:right;">
+11.62
+</td>
+<td style="text-align:right;">
+55.52
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #faf1d6">93.89</span>
+</td>
+<td style="text-align:right;">
+160.76
+</td>
+<td style="text-align:right;">
+267.78
+</td>
+<td style="text-align:right;">
+7274.88
+</td>
+<td style="text-align:right;">
+145.03
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+credit_card
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #6fa990">76704</span>
+</td>
+<td style="text-align:right;">
+1.01
+</td>
+<td style="text-align:right;">
+62.37
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">106.95</span>
+</td>
+<td style="text-align:right;">
+181.42
+</td>
+<td style="text-align:right;">
+315.07
+</td>
+<td style="text-align:right;">
+13664.08
+</td>
+<td style="text-align:right;">
+163.51
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+debit_card
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #ffffff">1529</span>
+</td>
+<td style="text-align:right;">
+13.38
+</td>
+<td style="text-align:right;">
+51.10
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f9ecc8">89.30</span>
+</td>
+<td style="text-align:right;">
+154.32
+</td>
+<td style="text-align:right;">
+249.64
+</td>
+<td style="text-align:right;">
+4445.50
+</td>
+<td style="text-align:right;">
+142.57
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+voucher
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #f7faf8">5702</span>
+</td>
+<td style="text-align:right;">
+1.02
+</td>
+<td style="text-align:right;">
+18.93
+</td>
+<td style="text-align:right;">
+<span style="display: block; padding: 0 4px; border-radius: 4px; background-color: #eab931">40.11</span>
+</td>
+<td style="text-align:right;">
+81.10
+</td>
+<td style="text-align:right;">
+137.59
+</td>
+<td style="text-align:right;">
+3184.34
+</td>
+<td style="text-align:right;">
+66.54
+</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+</div>
+</div>
+<div id="insights-summary" class="section level1">
+<h1>Insights summary</h1>
+<hr />
+<ul>
+<li><p>Business performance</p>
+<ul>
+<li>Both <strong>GMV &amp; number of deliverred orders</strong> were <strong>x10</strong> in 2017, <strong>stabling at ~$900k and ~7000 orders/ months</strong> respectively in 2018</li>
+<li>The <strong>delivery rate</strong> was improved considerably <strong>from 93% to 98%</strong> over 1.5 years</li>
+<li>The <strong>canceled order rates</strong> were constantly kept <strong>below 1.3%</strong></li>
+<li><strong>Percentage of unavailable orders decreased</strong> from 2.5% to around <strong>0.2%</strong></li>
+</ul>
+=&gt; The product availability on the e-commerce platform has met consumers’ demands
+<ul>
+<li><strong>50%</strong> of orders has their <strong>values above $80-$90</strong> and this median AOV <strong>stables</strong> over 18 months</li>
+</ul>
+=&gt; There is a <strong>room for AOV improvement</strong> by better cross-sell &amp; up-sell
+<ul>
+<li>There are only <strong>1788 returned customer</strong> over the last 18 months, making up <strong>1.87%</strong></li>
+</ul>
+<p>=&gt; The <strong>retention rate</strong> is surprisingly <strong>low</strong> for an e-commerce platform</p></li>
+<li><p>Operation performance</p>
+<ul>
+<li>There is a <strong>remarkable improvement in order processing time</strong> in recent 5 months with the median <strong>dropping from ~13 days to ~7 days per order</strong></li>
+<li><strong>Nov 2017, Feb &amp; Mar 2018</strong> witnessed <strong>10-20% of orders being lately-delivered</strong>. However, the situation was <strong>quickly rectified</strong></li>
+<li>Roughly <strong>95%</strong> of orders are <strong>delivered on time or early</strong> compared to estimation for most of the observed months</li>
+</ul></li>
+<li><p>Customer behaviours</p>
+<ul>
+<li>The average <strong>review scores</strong> have been kept <strong>above 4</strong>, <strong>except for months when some late-delivered orders were recorded</strong></li>
+<li>The marketplace is <strong>most popular for Bed-Bath-Table, Heath-Beauty and Sport-Leisure</strong> product categories over 18 months</li>
+<li><strong>Watches-Gifts</strong> is also a noticeable category for <strong>second highest total GMV</strong> following Heath-Beauty</li>
+<li>There is a <strong>surge in popularity</strong> of Health-Beauty and Computers-Accessories** to Top 3, and <strong>Watches &amp; Gifts and Auto</strong> to <strong>Top 10</strong></li>
+<li>The <strong>peak daytime</strong> for orders are between <strong>10am and 17pm</strong> in weekdays. <strong>Evenings from Monday to Thursday &amp; Sunday</strong> are second popular for online purchase</li>
+</ul>
+=&gt; It’s the time when system stability is crucial and campaigns should be run
+<ul>
+<li><strong>Credit card</strong> is the <strong>most used</strong> payment method, especially for high valued orders, while <strong>vouchers</strong> are usually paid for <strong>low valued</strong> ones</li>
+</ul></li>
+</ul>
+</div>
+<div id="recommendations" class="section level1">
+<h1>Recommendations</h1>
+<ul>
+<li><p>Enhance cross-sell &amp; up-sell by <strong>recommendation engine</strong> on the platform</p></li>
+<li><p>Improve customer retention rate to make full use of customer lifetime value by <strong>winback campaigns &amp; loyalty programs</strong></p></li>
+<li><p>After late delivery, there should be <strong>sorry letters and/ or gifts</strong> for customers’ disconsentment relief</p></li>
+</ul>
+</div>
+</div>
+
+<div class="col-xs-2">
+
+
+</div>
+</div>
+	
+
+</div>
+</div>
+
+ <script>
+    $(document).ready(function () {
+	// add bootstrap table styles to pandoc tables
+	$('tr.header').parent('thead').parent('table').addClass('table table-striped table-hover');
+	
+		var images = $('.pages img');
+	images.filter(function() {
+	    if ($(this).parent().attr("class") == "figure") {
+		return(false)
+	    } else {
+		return(true);
+	    }
+	}).wrap("<div class='figure'></div>");
+	images.addClass("image-thumb").wrap("<div class='panel-body'></div>");
+	$('.figure p.caption').wrap("<div class='panel-footer'></div>");
+	$('.figure').addClass('panel panel-default');
+	
+		$('.pages img').addClass("image-lb");
+	$('.pages').magnificPopup({
+	    type:'image',
+	    closeOnContentClick: false,
+	    closeBtnInside: false,
+            delegate: '.image-lb',
+	    gallery: {enabled: false },
+            removalDelay: 500,
+            callbacks: {
+		beforeOpen: function() {
+                    // just a hack that adds mfp-anim class to markup
+                    this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
+		}
+            },
+            mainClass: 'mfp-move-from-top',
+	    image: {
+	        verticalFit: true,
+		titleSrc: 'alt'
+	    }
+ 	});
+ 	
+	  
+	$(".page").addClass("active");
+	$('.pages').scrollspy({target: '#toc'});
+
+	  
+	window.page = window.location.hash;
+	if (window.page != "") {
+	    $(".menu").find("li[data-target=" + window.page + "]").trigger("click");
+	}
+	/* init material bootstrap js */
+	$.material.init();
+    });
+ </script>
+
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+ <script>
+   (function () {
+       var script = document.createElement("script");
+       script.type = "text/javascript";
+       script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+       document.getElementsByTagName("head")[0].appendChild(script);
+   })();
+ </script>
+ 
+</body>
+</html>
